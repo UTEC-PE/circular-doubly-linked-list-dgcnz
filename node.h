@@ -11,7 +11,15 @@ struct Node {
     Node* next;
     Node* prev;
 
-    void killSelf();
+    void killSelf(){
+        if (this->prev) {
+            this->prev = nullptr;
+            this->next->killSelf();
+            delete this;
+
+        }
+
+    }
     void print_next();
 };
 
